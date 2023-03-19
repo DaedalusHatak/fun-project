@@ -5,18 +5,20 @@ module.exports = {
     "./src/**/*.{vue,js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
-    colors:{
-     'marine':'hsl(var(--marine-blue) / <alpha-value>)',
-     'pastel':'hsl(var(--pastel-blue) / <alpha-value>)',
-     'lblue':'hsl(var(--light-blue) / <alpha-value>)',
-     'strawberry':'hsl(var(--strawberry-red) / <alpha-value>)',
-     'cgray':'hsl(var(--cool-gray) / <alpha-value>)',
-     'lgray':'hsl(var( --light-gray) / <alpha-value>)',
-     'magnolia':'hsl(var(--magnolia) / <alpha-value>)',
-     'alabaster':'hsl(var(--alabaster) / <alpha-value>)',
-     'white':'hsl(var(--white) / <alpha-value>)',
-    }
+    extend: {
+      colors:{
+        'marine':'var(--marine-blue)',
+        'pastel':'var(--pastel-blue)',
+        'lblue':'var(--light-blue)',
+        'strawberry':'var(--strawberry-red)',
+        'cgray':'var(--cool-gray)',
+        'lgray':'var( --light-gray)',
+        'magnolia':'var(--magnolia)',
+        'alabaster':'var(--alabaster)',
+        'white':'var(--white)',
+       }
+    },
+   
   },
   plugins: [],
 }
