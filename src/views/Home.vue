@@ -3,16 +3,16 @@
 		class="w-988 bg-white text-black p-4 grid grid-cols-3 border-2 rounded-xl"
 	>
 		<div class="bg-sidebar rounded-xl h-full grid justify-items-center">
-			<div class="uppercase odstep2 text-white ">
-				<div class="text-left odstep font-bold" v-for="step in steps">
-					<p class="text-cgray step">{{ step.stepNumber }}</p>
+			<div class="uppercase top text-white ">
+				<div class="text-left texting-body step-padding font-bold" v-for="step in steps">
+					<p class="text-cgray step ">{{ step.stepNumber }}</p>
 					<p>{{ step.stepName }}</p>
 				</div>
 			</div>
 		</div>
-		<div class="col-span-2 p-24">
-			<h2>Personal info</h2>
-			<p>Please provide your name, email address, and phone number.</p>
+		<div class="col-span-2 px-18 pt-10 text-left">
+			<h1 class="pb-3 ">Personal info</h1>
+			<p class="">Please provide your name, email address, and phone number.</p>
 			<form action="submit">
 				<div class="grid">
 					<label for="name">Name</label>
@@ -59,10 +59,13 @@ export default {
 </script>
 
 <style scoped>
-.odstep2{
+.px-18{
+    padding-left: 4.4rem;
+}
+.top{
     padding-top: 39px;
 }
-.odstep{
+.step-padding{
     padding-bottom: 29px;
 }
 .w-988 {
@@ -70,7 +73,7 @@ export default {
 
 	max-height: 866px;
 }
-p{
+.texting-body{
     font-size: 15px;
 }
 .step{
@@ -82,5 +85,11 @@ p{
 	background-size: contain;
 	width: 274px;
 	height: 566px;
+}
+
+h1{
+    letter-spacing: -0.020em;
+    font-weight: 700;
+    font-size: 33px;
 }
 </style>
