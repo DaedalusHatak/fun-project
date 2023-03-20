@@ -11,18 +11,18 @@
 			</div>
 		</div>
 		<div class="col-span-2 px-18 pt-10 text-left">
-			<h1 class="pb-3 ">Personal info</h1>
-			<p class="">Please provide your name, email address, and phone number.</p>
+			<h1 class="pb-2 text-marine">Personal info</h1>
+			<p class="provide text-cgray">Please provide your name, email address, and phone number.</p>
 			<form action="submit">
-				<div class="grid">
-					<label for="name">Name</label>
-					<input type="text" name="name" />
+				<div class="grid pt-9">
+					<label  for="name">Name</label>
+					<input  type="text" name="name" />
 				</div>
-				<div class="grid">
+				<div class="grid pt-5">
 					<label for="name">Email Address</label>
 					<input type="text" name="name" />
 				</div>
-				<div class="grid">
+				<div class="grid pt-5">
 					<label for="name">Phone Number</label>
 					<input type="text" name="name" />
 				</div>
@@ -71,7 +71,12 @@ export default {
 .w-988 {
 	width: 940px;
 
-	max-height: 866px;
+	max-height: 600px;
+}
+.provide{
+	letter-spacing: -0.025em;
+	padding-top: 3px;
+	font-size: 17px;
 }
 .texting-body{
     font-size: 15px;
@@ -82,14 +87,39 @@ export default {
 .bg-sidebar {
 	background-image: url('../assets/images/bg-sidebar-desktop.svg');
 	/* background-repeat: no-repeat; */
-	background-size: contain;
-	width: 274px;
-	height: 566px;
+	background-size: cover;
+	background-repeat: no-repeat;
+	width: 273px;
+	height: 568px;
 }
 
 h1{
-    letter-spacing: -0.020em;
+	padding-top:1px;
+	-webkit-font-smoothing: antialiased;
+-moz-osx-font-smoothing: grayscale;
+    letter-spacing: 0.005em;
     font-weight: 700;
-    font-size: 33px;
+    font-size: 32px;
+}
+
+label{
+	color:var(--marine-blue);
+	font-size: 14.3px;
+	padding-bottom: 7px;
+	padding-top: 1.8px;
+}
+input{
+	margin-top: -1px;
+	margin-bottom: 1.5px;
+	margin-left: 1px;
+	width:450px;
+	border-radius: 0.5rem;
+	border: 1px solid var(--light-gray);
+	height: 48px;
+	background-color: white;
+}
+input:focus-visible,input:active{
+	outline: none !important;
+	border: 1px solid var(--purplish-blue);	
 }
 </style>
