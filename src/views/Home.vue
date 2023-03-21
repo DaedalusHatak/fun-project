@@ -3,10 +3,13 @@
 		class="w-988 bg-white text-black p-4 grid grid-cols-3 border-2 rounded-xl"
 	>
 		<div class="bg-sidebar rounded-xl h-full grid justify-items-center">
-			<div class="uppercase top text-white ">
-				<div class="text-left texting-body step-padding font-bold" v-for="step in steps">
-					<p class="text-cgray font-normal step ">{{ step.stepNumber }}</p>
-					<p>{{ step.stepName }}</p>
+			<div class="uppercase top pr-14 text-white ">
+				<div class="stepgrid  text-left texting-body step-padding font-bold" v-for="step in steps">
+					
+						<div :class="currentStep === step.id ? 'current-step' : ''" class="mt-1 circle">{{step.id}}</div>
+					
+			<div><p class="text-cgray font-normal step ">{{ step.stepNumber }}</p>
+					<p>{{ step.stepName }}</p></div>
 				</div>
 			</div>
 		</div>
@@ -40,20 +43,25 @@ export default {
 			formEmail:'',
 			formPhone:'',
 			errors: false,
+			currentStep: '4',
 			steps: [
 				{
+					id:'1',
 					stepNumber: 'step 1',
 					stepName: 'Your info',
 				},
                 {
+					id:'2',
 					stepNumber: 'step 2',
 					stepName: 'Select plan',
 				},
                 {
+					id:'3',
 					stepNumber: 'step 3',
 					stepName: 'Add-ons',
 				},
                 {
+					id:'4',
 					stepNumber: 'step 4',
 					stepName: 'Summary',
 				},
@@ -74,6 +82,28 @@ export default {
 </script>
 
 <style scoped>
+.circle {
+  border-radius: 100%;
+  width: 32px;
+  height: 32px;
+  padding-top: 6px;
+  margin-right: 20px;
+  background: transparent;
+  border: 1px solid #fff;
+  color: #fff;
+  text-align: center;
+  font: 16px Arial, sans-serif;
+}
+.current-step{
+	
+	color:#000;
+	background-color: white;
+}
+.stepgrid{
+	display: grid;
+	grid-template-columns: min-content 1fr;
+	align-content: left;
+}
 .error {
  
     outline: 2px solid red;
@@ -90,7 +120,7 @@ export default {
     padding-top: 39px;
 }
 .step-padding{
-    padding-bottom: 29px;
+    padding-bottom: 26px;
 }
 .w-988 {
 	width: 940px;
