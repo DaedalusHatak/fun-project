@@ -5,7 +5,7 @@
 		<div class="bg-sidebar rounded-xl h-full grid justify-items-center">
 			<div class="uppercase top text-white ">
 				<div class="text-left texting-body step-padding font-bold" v-for="step in steps">
-					<p class="text-cgray step ">{{ step.stepNumber }}</p>
+					<p class="text-cgray font-normal step ">{{ step.stepNumber }}</p>
 					<p>{{ step.stepName }}</p>
 				</div>
 			</div>
@@ -13,19 +13,20 @@
 		<div class="col-span-2 px-18 pt-10 text-left">
 			<h1 class="pb-2 text-marine">Personal info</h1>
 			<p class="provide text-cgray">Please provide your name, email address, and phone number.</p>
-			<form action="submit">
+			<form  action="submit" @submit.prevent="something">
 				<div class="grid pt-9">
 					<label  for="name">Name</label>
-					<input  type="text" name="name" />
+					<input  type="text" name="name" v-model="formName" required  />
 				</div>
 				<div class="grid pt-5">
 					<label for="name">Email Address</label>
-					<input type="text" name="name" />
+					<input type="text" name="name" required />
 				</div>
 				<div class="grid pt-5">
 					<label for="name">Phone Number</label>
-					<input type="text" name="name" />
+					<input type="text" name="name" required />
 				</div>
+				<div class="grid "><button type="submit" class="mt-18 justify-self-end self-end font-medium">Next Step</button></div>
 			</form>
 		</div>
 	</div>
@@ -35,6 +36,10 @@
 export default {
 	data() {
 		return {
+			formName:'',
+			formEmail:'',
+			formPhone:'',
+			errors: false,
 			steps: [
 				{
 					stepNumber: 'step 1',
@@ -54,13 +59,32 @@ export default {
 				},
 			],
 		};
+
+	},
+	methods:
+	{
+		something(){
+	console.log(this.errors)
+	},
+	invalidateForm() {
+      this.errors = true;
+    }
 	},
 };
 </script>
 
 <style scoped>
+.error {
+ 
+    outline: 2px solid red;
+ 
+}
+.mt-18{
+	margin-top: 90px;
+}
 .px-18{
     padding-left: 4.4rem;
+	width:521px;
 }
 .top{
     padding-top: 39px;
@@ -72,6 +96,14 @@ export default {
 	width: 940px;
 
 	max-height: 600px;
+}
+button{
+	color:var(--white);
+	font-size: 16px;
+	
+	padding: 0.85em 1.55em;
+	border-radius: 8px;
+	background-color: var(--purplish-blue);
 }
 .provide{
 	letter-spacing: -0.025em;
