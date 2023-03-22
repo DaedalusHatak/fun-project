@@ -2,18 +2,34 @@
 
 			
 			
-				<div class="grid pt-9">
-					<label  for="name">Name</label>
-					<input  type="text" name="name"  required  />
+				<div class="grid gap-5 grid-cols-3 pt-9">
+						<button class="card">
+							<img src="../assets/images/icon-arcade.svg" alt="">
+							<p class="font-bold">Arcade</p>
+							<p class="text-cgray">$9/mo</p>
+						</button>
+						<button class="card">
+							<img src="../assets/images/icon-advanced.svg" alt="">
+							<p class="font-bold">Advanced</p>
+							<p class="text-cgray">$12/mo</p>
+						</button>
+						<button class="card">
+							<img src="../assets/images/icon-pro.svg" alt="">
+							<p class="font-bold">Pro</p>
+							<p class="text-cgray">$15/mo</p>
+						</button>
 				</div>
 				<div class="grid pt-5">
-					<label for="name">Email Address</label>
-					<input type="text" name="name" required />
+					<label for="check"
+					class="bg-gray-100 w-20 relative h-10 rounded-full">
+						<input 
+						class="sr-only peer"
+						type="checkbox"
+					role="switch" id="check">
+					<span class="w-2/5 h-4/5 bg-rose-300 absolute rounded-full left-1 top-1 peer-checked:bg-rose-600 peer-checked:left-11 transition-all duration-300"></span>
+					</label>
 				</div>
-				<div class="grid pt-5">
-					<label for="name">Phone Number</label>
-					<input type="text" name="name" required />
-				</div>
+
 				<div class="grid "><button type="submit" @click.prevent="something" class="mt-18 justify-self-end self-end font-medium">Next Step</button></div>
 			
 </template>
@@ -32,6 +48,9 @@ export default{
 	margin-top: 90px;
 }
 
+img{
+	padding-bottom: 40px;
+}
 
 button{
 	color:var(--white);
@@ -41,8 +60,18 @@ button{
 	border-radius: 8px;
 	background-color: var(--purplish-blue);
 }
-
-
+.card{
+	text-align: left;
+	width:135px;
+	height:160px;
+	border: 1px solid #000;
+	color:var(--marine-blue);
+	font-size: 16px;
+	
+	padding-left: 16px;
+	border-radius: 8px;
+	background-color: var(--white);
+}
 label{
 	color:var(--marine-blue);
 	font-size: 14.3px;
