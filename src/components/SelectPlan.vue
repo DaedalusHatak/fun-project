@@ -1,32 +1,29 @@
 <template>
-    	
+
 			
 			
 				<div class="grid pt-9">
 					<label  for="name">Name</label>
-					<input  type="text" name="name" :value="name" @input="$emit('update:name',$event.target.value)"   required  />
+					<input  type="text" name="name"  required  />
 				</div>
 				<div class="grid pt-5">
 					<label for="name">Email Address</label>
-					<input type="text" name="name" :value="email" @input="$emit('update:email',$event.target.value)" required />
+					<input type="text" name="name" required />
 				</div>
 				<div class="grid pt-5">
 					<label for="name">Phone Number</label>
-					<input type="text" name="name" :value="phone" @input="$emit('update:phone',$event.target.value)" required />
+					<input type="text" name="name" required />
 				</div>
-				<div class="grid "><button  type="submit" @click.prevent="something"  class="mt-18 justify-self-end self-end font-medium">Next Step</button></div>
-	
+				<div class="grid "><button type="submit" @click.prevent="something" class="mt-18 justify-self-end self-end font-medium">Next Step</button></div>
+			
 </template>
 
 <script>
 export default{
-    emits: ['update:name', 'update:email', 'update:phone'],
     data(){
-        return{
-
-        };
+        return{};
     },
-    props:['something','name','email','phone']
+    props:['something']
 };
 </script>
 
@@ -44,6 +41,7 @@ button{
 	border-radius: 8px;
 	background-color: var(--purplish-blue);
 }
+
 
 label{
 	color:var(--marine-blue);

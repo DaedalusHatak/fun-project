@@ -1,69 +1,75 @@
 <template>
 	<div
-		class="w-988 bg-white text-black p-4 grid grid-cols-3 border-2 rounded-xl"
+		class="multi-step bg-white text-black p-4 grid grid-cols-3 border-2 rounded-xl"
 	>
 		<div class="bg-sidebar rounded-xl h-full grid justify-items-center">
-			<div class="uppercase top pr-14 text-white ">
-				<div class="stepgrid  text-left texting-body step-padding font-bold" v-for="step in steps">
+			<div class="uppercase top-step-space pr-14 text-white ">
+				<div class="step-grid  text-left fs-15 step-padding font-bold" v-for="step in steps">
 					
 						<div :class="currentStep === step.id ? 'current-step' : ''" class="mt-1 circle">{{step.id}}</div>
 					
-			<div><p class="text-cgray font-normal step ">{{ step.stepNumber }}</p>
+			<div><p class="text-cgray font-normal fs-14 ">{{ step.stepNumber }}</p>
 					<p>{{ step.stepName }}</p></div>
 				</div>
 			</div>
 		</div>
-		<div class="col-span-2 px-18 pt-10 text-left">
-			<h1 class="pb-2 text-marine">Personal info</h1>
-			<p class="provide text-cgray">Please provide your name, email address, and phone number.</p>
-			<form  action="submit" @submit.prevent="something">
-				<div class="grid pt-9">
-					<label  for="name">Name</label>
-					<input  type="text" name="name" v-model="formName" required  />
-				</div>
-				<div class="grid pt-5">
-					<label for="name">Email Address</label>
-					<input type="text" name="name" required />
-				</div>
-				<div class="grid pt-5">
-					<label for="name">Phone Number</label>
-					<input type="text" name="name" required />
-				</div>
-				<div class="grid "><button type="submit" class="mt-18 justify-self-end self-end font-medium">Next Step</button></div>
-			</form>
+		<div class="col-span-2 section-placement pt-10 text-left">
+			<header-template :header="steps[currentStep-1].stepHeader" :para="steps[currentStep-1].stepPara"></header-template>
+			<your-info 
+			v-model:name="formName"
+			v-model:email="formEmail"
+			v-model:phone="formPhone"
+			v-if="currentStep===1" :something="something"></your-info>
+		<select-plan v-if="currentStep===2" :something="something"></select-plan>
+		<add-ons v-if="currentStep===3" :something="something"></add-ons>
+		<your-summary v-if="currentStep===4" :something="something"></your-summary>
 		</div>
 	</div>
 </template>
 
 <script>
+import HeaderTemplate from '../components/HeaderTemplate.vue';
+import YourInfo from '../components/YourInfo.vue';
+import AddOns from '../components/AddOns.vue';
+import SelectPlan from '../components/SelectPlan.vue';
+import YourSummary from '../components/YourSummary.vue';
 export default {
+	components:{YourInfo,YourSummary,AddOns,SelectPlan,HeaderTemplate},
 	data() {
 		return {
 			formName:'',
 			formEmail:'',
 			formPhone:'',
 			errors: false,
-			currentStep: '4',
+			currentStep: 1,
 			steps: [
 				{
-					id:'1',
+					id:1,
 					stepNumber: 'step 1',
 					stepName: 'Your info',
+					stepHeader: 'Personal info',
+					stepPara: 'Please provide your name, email address, and phone number.',
 				},
                 {
-					id:'2',
+					id:2,
 					stepNumber: 'step 2',
 					stepName: 'Select plan',
+					stepHeader: 'Select your plan',
+					stepPara: 'You have the option of monthly or yearly billing.',
 				},
                 {
-					id:'3',
+					id:3,
 					stepNumber: 'step 3',
 					stepName: 'Add-ons',
+					stepHeader: 'Pick add-ons',
+					stepPara: 'Add-ons help enhance your gaming experience.',
 				},
                 {
-					id:'4',
+					id:4,
 					stepNumber: 'step 4',
 					stepName: 'Summary',
+					stepHeader: 'Finishing up',
+					stepPara: 'Double-check everything looks OK before confirming.',
 				},
 			],
 		};
@@ -72,7 +78,14 @@ export default {
 	methods:
 	{
 		something(){
-	console.log(this.errors)
+			console.log(this.steps[this.currentStep-1].stepHeader);
+			console.log(this.formName);
+			console.log(this.formEmail);
+			console.log(this.formPhone);
+	if(this.currentStep<4){
+		this.currentStep++;
+	}
+
 	},
 	invalidateForm() {
       this.errors = true;
@@ -99,7 +112,7 @@ export default {
 	color:#000;
 	background-color: white;
 }
-.stepgrid{
+.step-grid{
 	display: grid;
 	grid-template-columns: min-content 1fr;
 	align-content: left;
@@ -109,41 +122,32 @@ export default {
     outline: 2px solid red;
  
 }
-.mt-18{
-	margin-top: 90px;
-}
-.px-18{
+
+.section-placement{
     padding-left: 4.4rem;
 	width:521px;
 }
-.top{
+
+.top-step-space{
     padding-top: 39px;
 }
 .step-padding{
     padding-bottom: 26px;
 }
-.w-988 {
+
+
+.multi-step {
 	width: 940px;
 
 	max-height: 600px;
 }
-button{
-	color:var(--white);
-	font-size: 16px;
-	
-	padding: 0.85em 1.55em;
-	border-radius: 8px;
-	background-color: var(--purplish-blue);
-}
-.provide{
-	letter-spacing: -0.025em;
-	padding-top: 3px;
-	font-size: 17px;
-}
-.texting-body{
+
+
+
+.fs-15{
     font-size: 15px;
 }
-.step{
+.fs-14{
     font-size: 14px;
 }
 .bg-sidebar {
@@ -164,24 +168,5 @@ h1{
     font-size: 32px;
 }
 
-label{
-	color:var(--marine-blue);
-	font-size: 14.3px;
-	padding-bottom: 7px;
-	padding-top: 1.8px;
-}
-input{
-	margin-top: -1px;
-	margin-bottom: 1.5px;
-	margin-left: 1px;
-	width:450px;
-	border-radius: 0.5rem;
-	border: 1px solid var(--light-gray);
-	height: 48px;
-	background-color: white;
-}
-input:focus-visible,input:active{
-	outline: none !important;
-	border: 1px solid var(--purplish-blue);	
-}
+
 </style>
