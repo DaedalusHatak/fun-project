@@ -13,7 +13,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="col-span-2 section-placement pt-10 text-left">
+		<div class="col-span-2 section-placement pt-10 text-left relative">
 			<header-template :header="steps[currentStep-1].stepHeader" :para="steps[currentStep-1].stepPara"></header-template>
 			<your-info 
 			v-model:name="formName"

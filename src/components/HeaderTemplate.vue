@@ -10,7 +10,7 @@ export default{
 <style scoped>
 .provide{
 	letter-spacing: -0.025em;
-	padding-top: 3px;
+	padding-top: 11px;
 	font-size: 17px;
 }
 h1{
