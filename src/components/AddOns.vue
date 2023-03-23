@@ -2,32 +2,44 @@
     
 			
 			
-				<div class="grid pt-9">
-					<label  for="name">Name</label>
-					<input  type="text" name="name"  required  />
+				<div v-for="addon in addons" class="input-container  mt-9">
+					<div  class="input-field items-center"><input class="m-5" type="checkbox" v-model="addon.addonChecked" :name="addon.title" value="onlineServices"><div><p>{{addon.title}}</p>
+					<p>{{ addon.desc }}</p>
+				</div> <p class="justify-self-end mr-5">+{{!monthlyOrYearly ? addon.priceMonthly : addon.priceYearly}}${{ !monthlyOrYearly ? '/mo' : '/yr' }}</p> </div>
+
 				</div>
-				<div class="grid pt-5">
-					<label for="name">Email Address</label>
-					<input type="text" name="name" required />
-				</div>
-				<div class="grid pt-5">
-					<label for="name">Phone Number</label>
-					<input type="text" name="name" required />
-				</div>
-				<div class="grid "><button type="submit" @click.prevent="something" class="mt-18 justify-self-end self-end font-medium">Next Step</button></div>
 			
+				<div class="w-full grid grid-cols-2 position absolute bottom-4 right-0">
+					<button
+			type="submit"
+			@click.prevent="backward"
+			class="mt-18 ml-20 !text-cgray !bg-transparent justify-self-start self-start font-medium"
+			>Go back</button
+		>
+					<button type="submit" @click.prevent="something" class="mt-18 justify-self-end self-end font-medium">Next Step</button>
+				</div>
 </template>
 
 <script>
 export default{
     data(){
-        return{};
+        return{
+			
+		};
     },
-    props:['something']
+    props:['backward','something','monthlyOrYearly','addons']
 };
 </script>
 
 <style scoped>
+.input-container{
+	border: 1px solid #000;
+	border-radius: 5px;
+}
+.input-field{
+	display: grid;
+	grid-template-columns: min-content 1fr min-content;
+}
 .mt-18{
 	margin-top: 90px;
 }
@@ -49,13 +61,10 @@ label{
 	padding-top: 1.8px;
 }
 input{
-	margin-top: -1px;
-	margin-bottom: 1.5px;
-	margin-left: 1px;
-	width:450px;
+	width:20px;
 	border-radius: 0.5rem;
-	border: 1px solid var(--light-gray);
-	height: 48px;
+	
+	height: 20px;
 	background-color: white;
 }
 input:focus-visible,input:active{
