@@ -15,15 +15,15 @@
           ${{ !checked ? card.valueMonthly : card.valueYearly
           }}{{ !checked ? "/mo" : "/yr" }}
         </p>
-
-       
+        
+        <p v-if="checked" class="text-13 pt-2">2 months free</p>
 </div>
 <p class="hidden desktop:block font-bold pt-2 pb-1">{{ card.name }}</p>
         <p class="hidden desktop:block flex text-cgray">
           ${{ !checked ? card.valueMonthly : card.valueYearly
           }}{{ !checked ? "/mo" : "/yr" }}
         </p>
-        <p v-if="checked" class="text-13 pt-2">2 months free</p>
+        <p v-if="checked" class="hidden desktop:block text-13 pt-2">2 months free</p>
       </div>
     </label>
   </div>
@@ -125,7 +125,7 @@ button {
   grid-template-columns: min-content 1fr;
   text-align: left;
   width: 100%;
-  height: 90px;
+  min-height: 90px;
 
   color: var(--marine-blue);
   font-size: 16px;
@@ -143,7 +143,7 @@ button {
   border: 1px solid var(--marine-blue);
 }
 
-@media screen and (min-width: 430px) {
+@media screen and (min-width: 940px) {
   .card {
   text-align: left;
   width: 135px;
