@@ -7,7 +7,7 @@
 
 </template>
 <script setup>
-import thankYou from '/multi-step/assets/images/icon-thank-you.svg'</script>
+import thankYou from '../assets/images/icon-thank-you.svg'</script>
 <style scoped>
 .final-step{
     display: grid;

@@ -220,7 +220,7 @@ img{
 }
 
 .bg-sidebar {
-	background-image: url('/multi-step/assets/bg-sidebar-desktop-e6d2744a.svg');
+	background-image: url('../assets/images/bg-sidebar-desktop.svg');
 	/* background-repeat: no-repeat; */
 	background-size: cover;
 	background-repeat: no-repeat;
@@ -259,7 +259,7 @@ h1 {
 	
 }
 .bg-sidebar {
-	background-image: url('/multi-step/assets/bg-sidebar-mobile-f8e29a05.svg');
+	background-image: url('../assets/images/bg-sidebar-mobile.svg');
 	/* background-repeat: no-repeat; */
 	background-position: bottom;
 	background-repeat: no-repeat;

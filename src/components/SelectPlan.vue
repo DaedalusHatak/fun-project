@@ -67,9 +67,9 @@
 </template>
 
 <script>
-import ArcadeImage from 'multi-step/assets/images/icon-arcade.svg';
-import AdvancedImage from 'multi-step/assets/images/icon-advanced.svg';
-import ProImage from 'multi-step/assets/images/icon-pro.svg';
+import ArcadeImage from '../assets/images/icon-arcade.svg';
+import AdvancedImage from '../assets/images/icon-advanced.svg';
+import ProImage from '../assets/images/icon-pro.svg';
 export default {
   data() {
     return {
