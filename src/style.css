@@ -18,7 +18,9 @@
 --white: hsl(0, 0%, 100%);
   }
 }
-
+span {
+  font-size: 15px;
+}
 :root {
   font-family: 'Ubuntu', sans-serif;
   line-height: 1.32;
@@ -26,7 +28,7 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  background-color: #fff;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -48,11 +50,16 @@ button{
 body {
   font-size: 16px;
   margin: 0;
-  display: flex;
-  place-items: center;
+
   min-height: 100vh;
 }
-
+ @media screen and (min-width:940px) {
+body{
+  display: flex;
+  place-items: center;
+}
+  
+ }
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
@@ -61,12 +68,13 @@ h1 {
 
 
 #app {
+ 
  max-width: 1440px;
   margin: 0 auto;
 
   text-align: center;
 }
-/* 
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
@@ -78,4 +86,4 @@ h1 {
   button {
     background-color: #f9f9f9;
   }
-} */
+}

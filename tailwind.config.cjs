@@ -6,6 +6,29 @@ module.exports = {
   ],
   theme: {
     extend: {
+      fontSize:{
+        '13': '13px',
+        '15': '15px',
+      },
+      padding:{
+        '7': '1.625rem',
+        '17': '4.4rem',
+        '9.5': '2.4375rem',
+       
+      },
+      spacing:{
+        '21': '6rem',
+      },
+      margin:{
+        '18': '5.625rem',
+      },
+      width:{
+        '9': '2.3125rem',
+        
+      },
+      screens:{
+        'desktop' : '940px'
+      },
       colors:{
         'marine':'var(--marine-blue)',
         'purplish':'var(--purplish-blue)',

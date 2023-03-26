@@ -9,11 +9,11 @@
 
 				</div>
 			
-				<div class="w-full grid grid-cols-2 position absolute bottom-4 right-0">
+				<div class="w-full desktop:w-max grid desktop:gap-48 grid-cols-2 position absolute bottom-4 right-0  desktop:right-21">
 					<button
 			type="submit"
 			@click.prevent="backward"
-			class="mt-18 ml-20 !text-cgray !bg-transparent justify-self-start self-start font-medium"
+			class="mt-18 desktop:ml-20 !text-cgray !bg-transparent justify-self-start self-start font-medium"
 			>Go back</button
 		>
 					<button type="submit" @click.prevent="something" class="mt-18 justify-self-end self-end font-medium">Next Step</button>
@@ -40,9 +40,7 @@ export default{
 	display: grid;
 	grid-template-columns: min-content 1fr min-content;
 }
-.mt-18{
-	margin-top: 90px;
-}
+
 
 button{
 	color:var(--white);

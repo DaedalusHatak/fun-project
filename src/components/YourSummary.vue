@@ -1,9 +1,11 @@
+<!-- ADD YOUR POST FORM HERE  -->
+
 <template>
 	<div class="card bg-alabaster rounded-lg">
 		<div class="grid grid-cols-2 items-center p-5">
 			<div class="font-bold text-marine"
 				>{{ whatPlan }} ({{ timeBilling ? 'Yearly' : 'Monthly' }})
-				<a href="/" @click="choosePlan"	 class="font-medium text-cgray">Change</a></div
+				<a @click="choosePlan"	 class="font-medium text-cgray">Change</a></div
 			>
 			<div class="font-bold text-right "
 				>${{
@@ -28,11 +30,11 @@
 	</div>
 
 	<div class=" grid grid-cols-2 px-5 py-5 text-cgray">Total ({{ !timeBilling ? 'per month' : 'per year' }}) <p class="text-right text-lg text-purplish font-bold">{{!timeBilling ? '+$'+total+'/mo' : '$'+total+'/yr'  }}</p></div>
-	<div class="w-full grid grid-cols-2 position absolute bottom-4 right-0">
+	<div class="w-full desktop:w-max grid desktop:gap-48 grid-cols-2 position absolute bottom-4 right-0  desktop:right-21">
 		<button
 			type="submit"
 			@click.prevent="backward"
-			class="mt-18 ml-20 !text-cgray !bg-transparent justify-self-start self-start font-medium"
+			class="mt-18 desktop:ml-20 !text-cgray !bg-transparent justify-self-start self-start font-medium"
 			>Go back</button
 		>
 		<button
@@ -86,13 +88,10 @@ export default {
 
 <style scoped>
 a{
+	cursor: pointer;
 	display:block;
 	text-decoration: underline;
 }
-.mt-18 {
-	margin-top: 90px;
-}
-
 button {
 	color: var(--white);
 	font-size: 16px;

@@ -1,33 +1,34 @@
 <template>
 	<div
-		class="multi-step bg-white text-black p-4 grid grid-cols-3 border-2 rounded-xl"
+		class="multi-step   relative bg-white text-black desktop:p-4 desktop:grid desktop:grid-cols-3 desktop:border-2 desktop:rounded-xl"
 	>
-		<div class="bg-sidebar rounded-xl h-full grid justify-items-center">
-			<div class="uppercase top-step-space pr-14 text-white">
+		<div class="bg-sidebar   desktop:rounded-xl h-full grid justify-items-center">
+			<div class="uppercase grid   grid-cols-4 desktop:block gap-7  mt-10 desktop:pt-9.5 desktop:pr-14 text-white">
 				<div
-					class="step-grid text-left fs-15 step-padding font-bold"
+					class="step-grid text-left text-15 desktop:pb-7 font-bold"
 					v-for="step in steps"
 				>
 					<div
-						:class="currentStep === step.id ? 'current-step' : ''"
-						class="mt-1 circle"
+						:class="currentStep === step.id ? '!text-black !bg-pastel ' : ''"
+						class="mt-1  circle place-self-center !font-medium"
 						>{{ step.id }}</div
 					>
 
-					<div
-						><p class="text-cgray font-normal fs-14">{{ step.stepNumber }}</p>
-						<p>{{ step.stepName }}</p></div
+					<div clsass="invisible dekstop:visible"
+						><p class="hidden desktop:flex text-cgray font-normal text-sm">{{ step.stepNumber }}</p>
+						<p class="hidden desktop:flex">{{ step.stepName }}</p></div
 					>
 				</div>
 			</div>
 		</div>
-		<div class="col-span-2 section-placement pt-10 text-left relative">
+		<div class="col-span-2 desktop:pl-17 mobile  desktop:w-11/12 pt-10 px-5 text-left ">
 			<header-template
 			v-if="summary===false"
 				:header="steps[currentStep - 1].stepHeader"
 				:para="steps[currentStep - 1].stepPara"
 			></header-template>
 			<your-info
+			:error="errors"
 				v-model:name="formName"
 				v-model:email="formEmail"
 				v-model:phone="formPhone"
@@ -36,7 +37,7 @@
 			></your-info>
 			<select-plan
 				v-if="currentStep === 2"
-				:monthlyOrYearly="monthlyOrYearly"
+				:monthly-or-yearly="monthlyOrYearly"
 				:backward="backward"
 				:something="something"
 				:plan="planChosed"
@@ -44,7 +45,7 @@
 			<add-ons
 				:backward="backward"
 				:addons="addons"
-				:monthlyOrYearly="monthlyOrYearly"
+				:monthly-or-yearly="monthlyOrYearly"
 				v-if="currentStep === 3"
 				:something="something"
 			></add-ons>
@@ -53,7 +54,7 @@
 				:addons="addons"
 				:plan="planChosed"
 				@change="changeStep"
-				:monthlyOrYearly="monthlyOrYearly"
+				:monthly-or-yearly="monthlyOrYearly"
 				v-if="currentStep === 4 && summary===false"
 
 				:something="something"
@@ -150,6 +151,10 @@ export default {
 			this.currentStep = 2;
 		},
 		something(val, plan) {
+			if(this.formName === '' || this.formEmail === '' || this.formPhone === ''){
+				this.errors=true;
+				return;
+			}
 			if (val === true || val === false) {
 				this.monthlyOrYearly = val;
 				this.planChosed = plan;
@@ -170,6 +175,7 @@ export default {
 			
 		},
 		backward() {
+			this.errors=false;
 			if (this.currentStep > 1) {
 				this.currentStep--;
 			}
@@ -179,6 +185,9 @@ export default {
 </script>
 
 <style scoped>
+img{
+	max-width: max-content;
+}
 .circle {
 	border-radius: 100%;
 	width: 32px;
@@ -191,43 +200,23 @@ export default {
 	text-align: center;
 	font: 16px Arial, sans-serif;
 }
-.current-step {
-	color: #000;
-	background-color: white;
-}
 .step-grid {
+	
 	display: grid;
 	grid-template-columns: min-content 1fr;
-	align-content: left;
+	align-content: start;
 }
 .error {
 	outline: 2px solid red;
 }
 
-.section-placement {
-	padding-left: 4.4rem;
-	width: 521px;
-}
-
-.top-step-space {
-	padding-top: 39px;
-}
-.step-padding {
-	padding-bottom: 26px;
-}
 
 .multi-step {
 	width: 940px;
-
+	height: 100vh;
 	max-height: 600px;
 }
 
-.fs-15 {
-	font-size: 15px;
-}
-.fs-14 {
-	font-size: 14px;
-}
 .bg-sidebar {
 	background-image: url('../assets/images/bg-sidebar-desktop.svg');
 	/* background-repeat: no-repeat; */
@@ -235,6 +224,7 @@ export default {
 	background-repeat: no-repeat;
 	width: 273px;
 	height: 568px;
+	
 }
 
 h1 {
@@ -244,5 +234,37 @@ h1 {
 	letter-spacing: 0.005em;
 	font-weight: 700;
 	font-size: 32px;
+}
+
+@media screen and (max-width:940px) {
+	.mobile{
+	position: absolute;
+	inset: 75px 0 0 0;
+	background-color: #fff;
+	border-radius: 10px;
+	margin:15px;
+	
+
+}
+	.circle{
+		margin-right: 0;
+	}
+
+	.multi-step {
+		max-height: 100%;
+	
+		width:100%;
+	
+}
+.bg-sidebar {
+	background-image: url('../assets/images/bg-sidebar-mobile.svg');
+	/* background-repeat: no-repeat; */
+	background-position: bottom;
+	background-repeat: no-repeat;
+	width: 100%;
+	height: 171px;
+	justify-content: space-evenly;
+	align-items: baseline;
+}
 }
 </style>
