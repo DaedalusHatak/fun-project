@@ -68,6 +68,8 @@
 </template>
 
 <script>
+import bgMobile from '../assets/images/bg-sidebar-mobile.svg'
+import bgDesktop from '../assets/images/bg-sidebar-desktop.svg'
 import FinalStep from '../components/FinalStep.vue'
 import HeaderTemplate from '../components/HeaderTemplate.vue';
 import YourInfo from '../components/YourInfo.vue';
@@ -218,7 +220,7 @@ img{
 }
 
 .bg-sidebar {
-	background-image: url('../assets/images/bg-sidebar-desktop.svg');
+	background-image: url('/multi-step/assets/bg-sidebar-desktop-e6d2744a.svg');
 	/* background-repeat: no-repeat; */
 	background-size: cover;
 	background-repeat: no-repeat;
@@ -257,7 +259,7 @@ h1 {
 	
 }
 .bg-sidebar {
-	background-image: url('../assets/images/bg-sidebar-mobile.svg');
+	background-image: url('/multi-step/assets/bg-sidebar-mobile-f8e29a05.svg');
 	/* background-repeat: no-repeat; */
 	background-position: bottom;
 	background-repeat: no-repeat;
